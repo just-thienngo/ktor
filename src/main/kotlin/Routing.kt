@@ -1,7 +1,7 @@
 package com.tkjen
 
 import com.tkjen.model.User
-import com.tkjen.repository.tasks
+import com.tkjen.repository.TaskRepository
 import com.tkjen.utils.tasksAsTable
 import io.ktor.http.ContentType
 import io.ktor.http.HttpStatusCode
@@ -24,6 +24,7 @@ fun Application.configureRouting() {
             call.respondText("Received user: ${user.name}")
         }
         get("/tasks"){
+            val tasks = TaskRepository.allTasks()
             call.respondText(
                 contentType = ContentType.parse("text/html"),
                 text = tasks.tasksAsTable()

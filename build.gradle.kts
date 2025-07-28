@@ -2,6 +2,7 @@
 plugins {
     alias(libs.plugins.kotlin.jvm)
     alias(libs.plugins.ktor)
+    alias(libs.plugins.kotlin.serialization)
 }
 
 group = "com.tkjen"
@@ -23,4 +24,11 @@ dependencies {
     implementation(libs.ktor.server.config.yaml)
     testImplementation(libs.ktor.server.test.host)
     testImplementation(libs.kotlin.test.junit)
+
+    implementation(libs.ktor.serialization.kotlinx.json)
+
+    testImplementation(libs.ktor.client.content.negotiation)
+
+    testImplementation("com.jayway.jsonpath:json-path:2.9.0")
+
 }
